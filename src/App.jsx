@@ -8,7 +8,7 @@ import {
 import './App.css';
 import React from 'react';
 
-const seriesStands = {
+const data = {
   StardustCrusaders: [
     {
       stand_image:
@@ -1135,11 +1135,27 @@ const seriesStands = {
   ],
 };
 
+const series = Object.keys(data);
+console.log(series, typeof series);
+
+// let { StardustCrusaders, DiamondIsUnbreakable, GoldenWind } = data;
+// const seriesArray = [StardustCrusaders, DiamondIsUnbreakable, GoldenWind];
+// console.log(seriesArray, typeof seriesArray);
+
 function Home() {
   return <h1>Home</h1>;
 }
 function Series() {
-  return <h1>Series</h1>;
+  return (
+    <>
+      <h1>Series</h1>
+      <ul>
+        {series.map((serie, i) => (
+          <li key={i}>{serie}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default function App() {
