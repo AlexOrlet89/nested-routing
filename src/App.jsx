@@ -1146,7 +1146,25 @@ const series = Object.keys(data);
 function Home() {
   return <h1>Home</h1>;
 }
+function StandList() {
+  const { categoryId } = useParams();
+  const { url, path } = useRouteMatch();
+  // console.log(url, path, categoryId, data);
+
+  console.log(data[categoryId]);
+
+  // const seriesStand = data.find(key);
+
+  return (
+    <>
+      <h2>{categoryId}</h2>
+      <p>{data[categoryId].length} stands</p>
+    </>
+  );
+}
 function Series() {
+  const { url, path } = useRouteMatch();
+  console.log(url, path);
   return (
     <>
       <h1>Series</h1>
@@ -1157,6 +1175,11 @@ function Series() {
           </li>
         ))}
       </ul>
+
+      <hr />
+      <Route exact path={`${path}/:categoryId`}>
+        <StandList />
+      </Route>
     </>
   );
 }
@@ -1177,7 +1200,7 @@ export default function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/series">
+        <Route path="/series">
           <Series />
         </Route>
       </div>
