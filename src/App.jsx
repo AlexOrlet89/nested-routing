@@ -1151,14 +1151,19 @@ function StandList() {
   const { url, path } = useRouteMatch();
   // console.log(url, path, categoryId, data);
 
-  console.log(data[categoryId]);
+  const stands = data[categoryId];
 
   // const seriesStand = data.find(key);
 
   return (
     <>
       <h2>{categoryId}</h2>
-      <p>{data[categoryId].length} stands</p>
+      <p>{stands.length} stands</p>
+      <ul>
+        {stands.map((stand, i) => (
+          <li key={i}>{stand.Stand}</li>
+        ))}
+      </ul>
     </>
   );
 }
