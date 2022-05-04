@@ -1,6 +1,7 @@
 # spotlight-nested-routing
 
 Alright, I'm gonna use JOJO stands because why not, it's got three categories I think it'll work perfectly...
+first we will replace categories with the series
 
 ## Demo
 
