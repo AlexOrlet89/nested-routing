@@ -1135,8 +1135,9 @@ const data = {
   ],
 };
 
+console.log();
 const series = Object.keys(data);
-console.log(series, typeof series);
+// console.log(series, typeof series); returns an array with the series titles only!
 
 // let { StardustCrusaders, DiamondIsUnbreakable, GoldenWind } = data;
 // const seriesArray = [StardustCrusaders, DiamondIsUnbreakable, GoldenWind];
@@ -1151,7 +1152,9 @@ function Series() {
       <h1>Series</h1>
       <ul>
         {series.map((serie, i) => (
-          <li key={i}>{serie}</li>
+          <li key={i}>
+            <Link to={`/series/${serie}`}>{serie}</Link>
+          </li>
         ))}
       </ul>
     </>
