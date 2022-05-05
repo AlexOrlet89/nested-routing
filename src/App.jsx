@@ -1135,7 +1135,6 @@ const data = {
   ],
 };
 
-console.log();
 const series = Object.keys(data);
 // console.log(series, typeof series); returns an array with the series titles only!
 
@@ -1161,15 +1160,36 @@ function StandList() {
       <p>{stands.length} stands</p>
       <ul>
         {stands.map((stand, i) => (
-          <li key={i}>{stand.Stand}</li>
+          <li key={i}>
+            <Link to={`${url}/${i}`}>{stand.Stand}</Link>
+          </li>
         ))}
+        <hr />
+        <Route path={`${path}/:index`}>
+          <Stand />
+        </Route>
       </ul>
     </>
   );
 }
+
+function Stand() {
+  const { categoryId, index } = useParams();
+  const stands = data[categoryId];
+  const stand = stands[index];
+  console.log(stand);
+  return (
+    <>
+      <h2>{stand.Stand}</h2>
+      <img src={stand.stand_image} />
+      <h2>{stand.user}</h2>
+      <img src={stand.user_image} />
+    </>
+  );
+}
+
 function Series() {
   const { url, path } = useRouteMatch();
-  console.log(url, path);
   return (
     <>
       <h1>Series</h1>
@@ -1182,7 +1202,7 @@ function Series() {
       </ul>
 
       <hr />
-      <Route exact path={`${path}/:categoryId`}>
+      <Route path={`${path}/:categoryId`}>
         <StandList />
       </Route>
     </>
